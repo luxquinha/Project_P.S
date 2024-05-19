@@ -6,19 +6,26 @@ import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 import { AppProvider } from './contexts';
+import App from './App';
 
 const routes = createBrowserRouter([
   {
     path: '/',
-    element: <HomePage/>
-  },
-  {
-    path: '/sobre',
-    element: <AboutPage/>
-  },
-  {
-    path: '/contato',
-    element: <ContactPage/>
+    element: <App/>,
+    children: [
+      {
+        path: '/',
+        element: <HomePage/>
+      },
+      {
+        path: '/sobre',
+        element: <AboutPage/>
+      },
+      {
+        path: '/contato',
+        element: <ContactPage/>
+      }
+    ]
   }
 ])
 
