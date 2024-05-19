@@ -6,7 +6,7 @@ const InputTextAction = ({icon, className, action, ...rest}) => {
     <button 
     {...rest}
     onClick={()=>{action()}} 
-    className={twMerge('bg-transparent h-6 w-6 flex items-center justify-center rounded-full text-sm text-yellowLogo hover:bg-bgLight hover:cursor-pointer hover:scale-110', className)}>
+    className={twMerge('bg-transparent h-7 w-7 flex items-center justify-center rounded-md text-sm text-skin-icon-primary hover:text-skin-icon-primary-hover hover:bg-skin-button-hover hover:cursor-pointer hover:scale-110', className)}>
         {icon}
     </button>
   )

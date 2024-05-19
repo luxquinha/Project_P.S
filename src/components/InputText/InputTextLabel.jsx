@@ -6,7 +6,7 @@ const InputTextLabel = ({placeholder, type, register, onChangeAction, ...rest}) 
   return (
     <>
       <input {...rest} type={type} placeholder={placeholder} data-show={show} {...register('search')} 
-      className='w-[80%] h-full text-grayLogo px-2 outline-none bg-transparent text-sm font-medium align-middle data-[show=false]:hidden'
+      className='w-[80%] h-full text-skin-hover px-2 outline-none bg-transparent text-sm font-medium align-middle data-[show=false]:hidden'
       autoComplete='off'
       onBlur={()=>{setShow(false)}}
     />

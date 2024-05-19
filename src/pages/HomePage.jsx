@@ -24,15 +24,16 @@ const HomePage = () => {
                 <Navbar.Link label={'Contact'} route={'/contato'}/>
               </Navbar.Links>
               <InputText.Root className='justify-end'>
-                <InputText.Action icon={themeLight==true ? <Sun size={18}/> : <Moon size={18}/>}
-                className='text-white  hover:text-grayLogo col-span-1 col-end-7 '
+                <InputText.Action icon={themeLight===true ? <Sun size={18}/> : <Moon size={18}/>}
+                className='text-skin-icon-secondary  hover:text-skin-icon-secondary-hover col-span-1 col-end-7 '
                 action={()=>{setThemeLight(!themeLight)}}
                 />
               </InputText.Root>
               <InputText.Root 
                 onMouseOver={()=>{setShow(true)}}
+                onBlur={()=>{setShow(false)}}
                 data-show={show}
-                className='justify-self-end col-span-2 col-start-7 w-18% data-[show=true]:bg-bgLight'>
+                className='justify-self-end col-span-2 col-start-7 w-18% data-[show=true]:bg-skin-button-hover '>
                 <form onSubmit={handleSubmit(handleSearch)} className='flex flex-row justify-between items-center'>
                   <InputText.Label type={'text'} placeholder={'Type here to search'}
                   register={register}
@@ -45,7 +46,7 @@ const HomePage = () => {
               </InputText.Root>
             </Navbar.Root>
         </header>
-        <main className='bg-zinc-50 bg-opacity-65 h-screen w-screen'>
+        <main className='bg-skin-primary h-screen w-full'>
           <h1>Home</h1>
         </main>
     </div>
