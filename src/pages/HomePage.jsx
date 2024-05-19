@@ -6,15 +6,14 @@ import useThemeContext from '../hooks/useTheme.js'
 import { useForm } from 'react-hook-form'
 
 const HomePage = () => {
-  const { setShow, show } = useThemeContext()
+  const { setShow, show, theme, handleToggleTheme} = useThemeContext()
   const { handleSubmit, register} = useForm()
-  const [themeLight, setThemeLight] = useState(true)
 
   const handleSearch = (params) =>{
     console.log(params);
   }
   return (
-    <div>
+    <div className={`${theme}`}>
         <header>
             <Navbar.Root className='grid grid-cols-8 justify-around'>
               <Navbar.Logo/>
@@ -24,9 +23,9 @@ const HomePage = () => {
                 <Navbar.Link label={'Contact'} route={'/contato'}/>
               </Navbar.Links>
               <InputText.Root className='justify-end'>
-                <InputText.Action icon={themeLight===true ? <Sun size={18}/> : <Moon size={18}/>}
+                <InputText.Action icon={theme==='theme-light' ? <Sun size={18}/> :(theme==='theme-dark' && <Moon size={18}/>)}
                 className='text-skin-icon-secondary  hover:text-skin-icon-secondary-hover col-span-1 col-end-7 '
-                action={()=>{setThemeLight(!themeLight)}}
+                action={handleToggleTheme}
                 />
               </InputText.Root>
               <InputText.Root 
@@ -46,7 +45,7 @@ const HomePage = () => {
               </InputText.Root>
             </Navbar.Root>
         </header>
-        <main className='bg-skin-primary h-screen w-full'>
+        <main className='bg-skin-primary h-screen w-full text-skin-base'>
           <h1>Home</h1>
         </main>
     </div>

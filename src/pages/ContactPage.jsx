@@ -35,7 +35,7 @@ const ContactPage = () => {
               </InputText.Root>
             </Navbar.Root>
         </header>
-        <main>
+        <main className='bg-skin-primary text-skin-base h-screen w-full'>
           <h1>Contato</h1>
         </main>
     </div>

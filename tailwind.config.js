@@ -28,6 +28,12 @@ module.exports = {
           terciary: 'var(--color-bg-terciary)',
           'button-hover': 'var(--color-button-bg-hover)',
         }
+      },
+
+      borderColor: {
+        skin: {
+          primary: 'var(--color-text-base)'
+        }
       }
     },
   },
