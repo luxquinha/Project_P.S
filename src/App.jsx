@@ -46,10 +46,10 @@ const App = () => {
               </InputText.Root>
             </Navbar.Root>
         </header>
-        <main className='bg-skin-primary h-screen w-full text-skin-base'>
+        <main className='bg-skin-primary min-h-screen min-w-full pt-10'>
             <Outlet/>
         </main>
-        <footer className='bg-skin-primary text-skin-base'>
+        <footer className='bg-skin-secondary bg-opacity-30 text-skin-base'>
             <span>rodapé</span>
         </footer>
         

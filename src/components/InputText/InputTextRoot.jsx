@@ -3,7 +3,7 @@ import useThemeContext from '../../hooks/useTheme'
 import { twMerge } from 'tailwind-merge'
 
 const InputText = ({children, ...rest}) => {
-  const { show, setShow } = useThemeContext()
+  const { show } = useThemeContext()
   return (
     <div 
     {...rest}

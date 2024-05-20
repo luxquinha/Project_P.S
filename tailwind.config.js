@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       colors:{
-        yellowLogo : '#1d3240',
+        yellowLogo : '#F9A826',
         bgDark : '#2F4858',
         bgLight : '#f0f0f0',
         grayLogo : '#e5ba74',
@@ -14,6 +14,8 @@ module.exports = {
         skin: {
           base: 'var(--color-text-base)',
           hover: 'var(--color-text-hover)',
+          muted: 'var(--color-text-muted)',
+          'muted-hover': 'var(--color-text-muted-hover)',
           'icon-primary': 'var(--color-button-primary)',
           'icon-primary-hover': 'var(--color-button-primary-hover)',
           'icon-secondary': 'var(--color-button-secondary)',
