@@ -1,33 +1,54 @@
 import React from 'react'
-import Carousel from '../components/Carousel'
-import CarouselImg from '../components/CarouselImg'
-import {Button} from '../components/Button/index'
+import { Carousel } from '../components/Carousel/index'
+import { Modal } from '../components/Modal/index'
 import useThemeContext from '../hooks/useTheme'
-import { ChevronRight, ChevronLeft } from 'lucide-react'
+import { ChevronRight, ChevronLeft, Eye, X } from 'lucide-react'
+import { FaRegHeart } from 'react-icons/fa'
+import { BsBookmark } from 'react-icons/bs'
+import { HiOutlineBookOpen } from 'react-icons/hi'
 // https://newsapi.org/v2/top-headlines?country=br&category=&apiKey=API_KEY
+
 const HomePage = () => {
-  const {slides, prev, next} = useThemeContext()
+  const {slideNews, prev, next, setOpenModal, currNews, handleModal} = useThemeContext()
+
   return (
-    <main className='bg-skin-primary text-skin-base'>
-      <Carousel autoSlide={true} autoSlideInterval={10000}>
-        {slides.map((s, i)=>(
-          <CarouselImg url={s} key={i}>
-            <div className='bg-gradient-to-t from-black from-10% to-transparent to-95% w-full h-36 px-8 py-4 rounded-2xl text-skin-muted hover:text-skin-muted-hover'>
-              <h2 className='text-6xl font-medium text-yellowLogo'>Titulo que vem do card da noticia</h2>
-              <h3 className='text-lg ml-3'>Aqui irá a descrição da reportagem que será anunciada nesse slider, com algumas palavras e um botão de 'read more'</h3>
-            </div>
-            <div className='absolute inset-1 flex flex-row justify-between items-center'>
-              <Button.Root className='hover:text-skin-hover items-center'>
-                <Button.Icon icon={<ChevronLeft size={60}/>} action={prev}/>
-              </Button.Root>
-              <Button.Root className='hover:text-skin-hover items-center'>
-                <Button.Icon icon={<ChevronRight size={60}/>} action={next}/>
-              </Button.Root>
-            </div>
-          </CarouselImg>
-        ))}
-      </Carousel>
-    </main>
+    <section className='bg-skin-primary text-skin-base'>
+      <div>
+        <Carousel.Root slidePagination={true} autoSlide={true}>
+          {slideNews?.map((n, i)=>(
+            <Carousel.Image url={n.url} key={i}>
+              <Carousel.Content 
+              title={n.title}
+              description={n.description}
+              />
+              <Carousel.Actions>
+                <Carousel.Action action={()=>(handleModal(n))} icon={<Eye size={20}/>}
+                className='flex items-center justify-center w-7 h-7 rounded-lg bg-skin-primary absolute top-1 right-4'
+                />
+                <Carousel.Action action={prev} icon={<ChevronLeft size={60}/>} className='left-1'/>
+                <Carousel.Action action={next} icon={<ChevronRight size={60}/>} className='right-1'/>
+              </Carousel.Actions>
+            </Carousel.Image>
+          ))}
+        </Carousel.Root>
+      </div>
+      <Modal.Root>
+        <Modal.Window>
+          <Modal.Image url={currNews.url}/>
+          <Modal.Content title={currNews.title} description={currNews.description}>
+            <Modal.Actions>
+              <Modal.Action icon={<X size={23}/>} action={()=>(setOpenModal(false))} className='absolute top-1 right-1 w-8 h-8 hover:bg-transparent hover:scale-110'/>
+              <Modal.Action label='Gostei' icon={<FaRegHeart size={20}/>} action={()=>(console.log('Gostei'))}/>
+              <Modal.Action label='Ler depois' icon={<BsBookmark size={18}/>} action={()=>(console.log('Ler depois'))}/>
+              <Modal.Action label='Ler agora' icon={<HiOutlineBookOpen size={23}/>} action={()=>(console.log('Ler agora'))}/> 
+            </Modal.Actions>
+          </Modal.Content>
+        </Modal.Window>
+      </Modal.Root>
+      <div className='w-full h-screen bg-skin-terciary'>
+
+      </div>
+    </section>
   )
 }
 

@@ -1,7 +1,7 @@
 import React from 'react'
-import useThemeContext from '../hooks/useTheme'
+import useThemeContext from '../../hooks/useTheme'
 
-const CarouselImg = ({url, children}) => {
+const CarouselImage = ({url, children}) => {
   const {current} = useThemeContext()
 
   return (
@@ -16,4 +16,4 @@ const CarouselImg = ({url, children}) => {
   )
 }
 
-export default CarouselImg
+export default CarouselImage
