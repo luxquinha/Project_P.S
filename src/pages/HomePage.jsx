@@ -1,11 +1,13 @@
 import React from 'react'
 import { Carousel } from '../components/Carousel/index'
 import { Modal } from '../components/Modal/index'
+import { CategoryNews } from '../components/Category/index'
 import useThemeContext from '../hooks/useTheme'
 import { ChevronRight, ChevronLeft, Eye, X } from 'lucide-react'
 import { FaRegHeart } from 'react-icons/fa'
 import { BsBookmark } from 'react-icons/bs'
 import { HiOutlineBookOpen } from 'react-icons/hi'
+// import CategoryNews from '../components/Category/CategoryNews'
 // https://newsapi.org/v2/top-headlines?country=br&category=&apiKey=API_KEY
 
 const HomePage = () => {
@@ -14,7 +16,7 @@ const HomePage = () => {
   return (
     <section className='bg-skin-primary text-skin-base'>
       <div>
-        <Carousel.Root slidePagination={true} autoSlide={true}>
+        <Carousel.Root slidePagination={true} autoSlide={true} className='max-w-[1400px] h-[500px] w-[98%]'>
           {slideNews?.map((n, i)=>(
             <Carousel.Image url={n.url} key={i}>
               <Carousel.Content 
@@ -45,9 +47,16 @@ const HomePage = () => {
           </Modal.Content>
         </Modal.Window>
       </Modal.Root>
-      <div className='w-full h-screen bg-skin-terciary'>
 
-      </div>
+      <CategoryNews.Root category='Esporte'>
+          <CategoryNews.Hero mainNews={slideNews}/>
+      </CategoryNews.Root>
+
+        <Carousel.Root className='h-[300px] w-[98%] gap-x-3 px-4 items-center border border-zinc-900 mb-3'>
+          {slideNews?.map((n,i)=>(
+            <CategoryNews.Line lineNews={n} key={i}/>
+          ))}
+        </Carousel.Root>
     </section>
   )
 }
