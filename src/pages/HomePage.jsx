@@ -1,7 +1,7 @@
 import React from 'react'
 import { Carousel } from '../components/Carousel/index'
-import { Modal } from '../components/Modal/index'
 import { CategoryNews } from '../components/Category/index'
+import { Modal } from '../components/Modal/index'
 import useThemeContext from '../hooks/useTheme'
 import { ChevronRight, ChevronLeft, Eye, X } from 'lucide-react'
 import { FaRegHeart } from 'react-icons/fa'
@@ -52,11 +52,11 @@ const HomePage = () => {
           <CategoryNews.Hero mainNews={slideNews}/>
       </CategoryNews.Root>
 
-        <Carousel.Root className='h-[300px] w-[98%] gap-x-3 px-4 items-center border border-zinc-900 mb-3'>
-          {slideNews?.map((n,i)=>(
-            <CategoryNews.Line lineNews={n} key={i}/>
-          ))}
-        </Carousel.Root>
+      <Carousel.Draggable className='mt-1 py-2'>
+        {slideNews?.map((n,i)=>(
+          <CategoryNews.Line lineNews={n} key={i}/>
+        ))}
+      </Carousel.Draggable>
     </section>
   )
 }

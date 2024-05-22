@@ -4,11 +4,11 @@ import { Card } from '../Card/index'
 const CategoryNewsLine = ({lineNews}) => {
   return (
     <>
-      <Card.Root className='w-[24.5%] h-[93%] flex-row shrink-0 items-end duration-500 hover:scale-105 hover:shadow-lg'>
+      <Card.Root className='w-[24.5%] h-[300px] flex-row shrink-0 items-end overflow-hidden hover:cursor-grab'
+      whileTap={{cursor: 'grabbing'}}>
           <Card.Content 
           title={lineNews.title} 
-          description={lineNews.description} 
-          className='z-10 px-3 h-14'
+          className='z-10 px-3 h-1/4'
           titleStyle='text-xl'
           descriptionStyle='text-sm'
           />

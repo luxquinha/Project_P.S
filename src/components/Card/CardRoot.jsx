@@ -1,11 +1,12 @@
 import React from 'react'
 import { twMerge } from 'tailwind-merge'
+import { motion } from 'framer-motion'
 
-const CardRoot = ({children, className}) => {
+const CardRoot = ({children, className, ...rest}) => {
   return (
-    <div className={twMerge('relative flex rounded-lg bg-skin-button-hover justify-end overflow-hidden hover:cursor-pointer', className)}>
+    <motion.div {...rest} className={twMerge('relative flex rounded-lg bg-skin-button-hover justify-end overflow-hidden cursor-default', className)}>
         {children}
-    </div>
+    </motion.div>
   )
 }
 
