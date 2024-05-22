@@ -50,10 +50,10 @@ export const ThemeProvider = ({children}) =>{
     }
 
     const prev = () =>{
-        setCurrent((prevState)=> current===0 ? (slideNews.length-1): (current-1))
+        setCurrent((prevState)=> prevState===0 ? (slideNews.length-1): (prevState-1))
     }
     const next = () =>{
-        setCurrent((nextState)=> current===(slideNews.length-1) ? 0 : (current+1))
+        setCurrent((prevState)=> prevState===(slideNews.length-1) ? 0 : (prevState+1))
     }
 
     const handleModal = (data) => {

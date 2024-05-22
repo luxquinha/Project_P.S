@@ -1,19 +1,26 @@
 import React from 'react'
 import { Card } from '../Card/index'
+import { Modal } from '../Modal/index'
+import useThemeContext from '../../hooks/useTheme'
+import { Eye } from 'lucide-react'
 
 
 const CategoryNewsHero = ({mainNews}) => {
+
+  const { handleModal } = useThemeContext()
+
   return (
     <div className="flex flex-row px-4 h-[90%] gap-x-2 mt-2">
         {/* Card principal */}
         <Card.Root className='w-3/5 h-full shrink flex-col hover:cursor-default'>
-            <Card.Content 
-            title={mainNews[0].title} 
-            description={mainNews[0].description} 
-            className='z-10 px-3 h-1/5'
-            titleStyle='text-3xl'
-            />
-            <Card.Image url={mainNews[0].url} className='absolute rounded-lg hover:scale-110 duration-1000'/>
+          <Card.Content 
+          title={mainNews[0].title} 
+          description={mainNews[0].description} 
+          className='z-10 px-3 h-1/5'
+          titleStyle='text-3xl'
+          />
+          <Card.Image url={mainNews[0].url} className='absolute rounded-lg hover:scale-110 duration-1000'/>
+          <Modal.Trigger action={()=>(handleModal(mainNews[0]))} icon={<Eye size={18}/>} className='right-2 top-2 w-6 h-6'/>
         </Card.Root>
         {/* Cards secundários */}
         <div className='w-2/5 flex flex-col justify-around gap-y-2'>
@@ -28,6 +35,7 @@ const CategoryNewsHero = ({mainNews}) => {
                 titleStyle='text-xl'
                 descriptionStyle='text-sm h-11 text-skin-base font-medium'
                 />
+                <Modal.Trigger action={()=>(handleModal(n))} icon={<Eye size={16}/>} className='right-2 top-2 hover:bg-skin-primary hover:shadow-md bg-transparent w-6 h-6'/>
             </Card.Root>
             ))}
         </div>

@@ -7,8 +7,7 @@ import { ChevronRight, ChevronLeft, Eye, X } from 'lucide-react'
 import { FaRegHeart } from 'react-icons/fa'
 import { BsBookmark } from 'react-icons/bs'
 import { HiOutlineBookOpen } from 'react-icons/hi'
-// import CategoryNews from '../components/Category/CategoryNews'
-// https://newsapi.org/v2/top-headlines?country=br&category=&apiKey=API_KEY
+// https://newsapi.org/v2/top-headlines?country=br&category=&apiKsey=API_KEY
 
 const HomePage = () => {
   const {slideNews, prev, next, setOpenModal, currNews, handleModal} = useThemeContext()
@@ -24,9 +23,7 @@ const HomePage = () => {
               description={n.description}
               />
               <Carousel.Actions>
-                <Carousel.Action action={()=>(handleModal(n))} icon={<Eye size={20}/>}
-                className='flex items-center justify-center w-7 h-7 rounded-lg bg-skin-primary absolute top-1 right-4'
-                />
+                <Modal.Trigger action={()=>(handleModal(n))} icon={<Eye size={20}/>}/>
                 <Carousel.Action action={prev} icon={<ChevronLeft size={60}/>} className='left-1'/>
                 <Carousel.Action action={next} icon={<ChevronRight size={60}/>} className='right-1'/>
               </Carousel.Actions>
@@ -52,7 +49,7 @@ const HomePage = () => {
           <CategoryNews.Hero mainNews={slideNews}/>
       </CategoryNews.Root>
 
-      <Carousel.Draggable className='mt-1 py-2'>
+      <Carousel.Draggable className='mt-1 py-2' category='Destaques da Semana:'>
         {slideNews?.map((n,i)=>(
           <CategoryNews.Line lineNews={n} key={i}/>
         ))}

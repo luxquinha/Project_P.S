@@ -13,7 +13,7 @@ const ButtonRoot = ({children, action=null, ...rest}) => {
     <button 
     {...rest} 
     onClick={handleClick}
-    className={twMerge('flex flex-row gap-x-2 bg-transparent rounded-sm hover:cursor-pointer items-center', rest.className)}>
+    className={twMerge('flex flex-row gap-x-2 bg-transparent rounded-sm hover:cursor-pointer text-skin-inverted items-center', rest.className)}>
         {children}
     </button>
   )

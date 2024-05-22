@@ -3,6 +3,7 @@ import ModalActions from "./ModalActions";
 import ModalContent from "./ModalContent";
 import ModalImage from "./ModalImage";
 import ModalRoot from "./ModalRoot";
+import ModalTrigger from "./ModalTrigger";
 import ModalWindow from "./ModalWindow";
 
 export const Modal = {
@@ -11,5 +12,6 @@ export const Modal = {
     Image: ModalImage,
     Content: ModalContent,
     Actions: ModalActions,
-    Action: ModalAction
+    Action: ModalAction,
+    Trigger: ModalTrigger
 }
