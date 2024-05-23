@@ -1,8 +1,9 @@
 import React from 'react'
+import { twMerge } from 'tailwind-merge'
 
-const ModalWindow = ({children}) => {
+const ModalWindow = ({children, className}) => {
   return (
-    <div className='w-[85%] h-3/4 bg-skin-primary rounded-xl flex flex-row relative overflow-hidden'>
+    <div className={twMerge('bg-skin-primary rounded-xl flex w-[90%] h-[90%] flex-col lg:w-[85%] lg:h-[85%] lg:flex-row relative overflow-hidden',className)}>
         {children}
     </div>
   )

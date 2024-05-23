@@ -56,7 +56,7 @@ export const ThemeProvider = ({children}) =>{
         setCurrent((prevState)=> prevState===(slideNews.length-1) ? 0 : (prevState+1))
     }
 
-    const handleModal = (data) => {
+    const handleModal = (data=null) => {
         if(!data) return
         setCurrNews(data)
         setOpenModal(true)

@@ -15,8 +15,8 @@ const CarouselDraggable = ({children, className, category = ''}) => {
     ref={dragCar}
     className={twMerge('mx-auto relative overflow-hidden max-w-screen px-4 cursor-grab', className)} 
     whileTap={{cursor: 'grabbing'}}>
-      {category!=='' && <h2 className='text-4xl ml-2 mb-5 font-medium text-skin-inverted'>{category}</h2>}
-      <motion.div className='flex flex-row gap-x-3' drag='x' dragConstraints={{right: 0, left:-width}}>
+      {category!=='' && <h2 className='text-3xl md:text-4xl ml-2 mb-5 font-medium text-skin-inverted cursor-default'>{category}</h2>}
+      <motion.div className='flex flex-row gap-x-4' drag='x' dragConstraints={{right: 0, left:-width}}>
           {children}  
       </motion.div>
     </motion.div>

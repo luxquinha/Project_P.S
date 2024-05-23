@@ -3,6 +3,10 @@ module.exports = {
   content: ["./src/**/*.{html,js,jsx}"],
   theme: {
     extend: {
+      screens: {
+        '2xl': '1440px'
+        // => @media (min-width: 1440px)
+      },
       colors:{
         yellowLogo : '#F9A826',
         bgDark : '#2F4858',

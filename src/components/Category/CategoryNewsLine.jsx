@@ -10,16 +10,15 @@ const CategoryNewsLine = ({lineNews}) => {
 
   return (
     <>
-      <Card.Root className='w-[24.5%] h-[300px] flex-row shrink-0 items-end overflow-hidden hover:cursor-grab'
+      <Card.Root className='flex-row shrink-0 items-end hover:cursor-grab w-full h-[320px] md:w-[49.5%] lg:w-[32.7%] xl:h-[380px] rounded-2xl'
       whileTap={{cursor: 'grabbing'}}>
           <Card.Content 
           title={lineNews.title} 
-          className='z-10 px-3 h-1/4'
-          titleStyle='text-xl'
-          descriptionStyle='text-sm'
+          className='z-10 px-3 h-1/3 justify-center '
+          titleStyle='text-2xl xl:text-3xl'
           />
-          <Card.Image url={lineNews.url} className='absolute rounded-lg'/>
-          <Modal.Trigger action={()=>(handleModal(lineNews))} icon={<Eye size={18}/>} className='right-2 top-2 w-6 h-6'/>
+          <Card.Image url={lineNews.url} className='absolute rounded-lg h-full'/>
+          <Modal.Trigger action={()=>(handleModal(lineNews))} icon={<Eye size={18}/>} className='right-3 top-3 scale-125 lg:scale-100 lg:right-2 lg:top-2'/>
       </Card.Root>
     </>
   )

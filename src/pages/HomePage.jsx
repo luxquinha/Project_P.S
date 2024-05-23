@@ -4,6 +4,8 @@ import { CategoryNews } from '../components/Category/index'
 import { Modal } from '../components/Modal/index'
 import useThemeContext from '../hooks/useTheme'
 import { ChevronRight, ChevronLeft, Eye, X } from 'lucide-react'
+import { RiEyeCloseFill } from "react-icons/ri"
+import { LiaEye } from "react-icons/lia"
 import { FaRegHeart } from 'react-icons/fa'
 import { BsBookmark } from 'react-icons/bs'
 import { HiOutlineBookOpen } from 'react-icons/hi'
@@ -15,7 +17,7 @@ const HomePage = () => {
   return (
     <section className='bg-skin-primary text-skin-base'>
       <div>
-        <Carousel.Root slidePagination={true} autoSlide={true} className='max-w-[1400px] h-[500px] w-[98%]'>
+        <Carousel.Root slidePagination={true} autoSlide={true} className='max-w-[1400px] w-[98%] h-[calc(100vh-106px)]'>
           {slideNews?.map((n, i)=>(
             <Carousel.Image url={n.url} key={i}>
               <Carousel.Content 
@@ -38,8 +40,8 @@ const HomePage = () => {
             <Modal.Actions>
               <Modal.Action icon={<X size={23}/>} action={()=>(setOpenModal(false))} className='absolute top-1 right-1 w-8 h-8 hover:bg-transparent hover:scale-110'/>
               <Modal.Action label='Gostei' icon={<FaRegHeart size={20}/>} action={()=>(console.log('Gostei'))}/>
-              <Modal.Action label='Ler depois' icon={<BsBookmark size={18}/>} action={()=>(console.log('Ler depois'))}/>
-              <Modal.Action label='Ler agora' icon={<HiOutlineBookOpen size={23}/>} action={()=>(console.log('Ler agora'))}/> 
+              <Modal.Action label='Salvar' icon={<BsBookmark size={18}/>} action={()=>(console.log('Ler depois'))}/>
+              <Modal.Action label='Abrir' icon={<HiOutlineBookOpen size={23}/>} action={()=>(console.log('Ler agora'))}/> 
             </Modal.Actions>
           </Modal.Content>
         </Modal.Window>
@@ -49,7 +51,7 @@ const HomePage = () => {
           <CategoryNews.Hero mainNews={slideNews}/>
       </CategoryNews.Root>
 
-      <Carousel.Draggable className='mt-1 py-2' category='Destaques da Semana:'>
+      <Carousel.Draggable className='mt-1 py-2' category='Destaques'>
         {slideNews?.map((n,i)=>(
           <CategoryNews.Line lineNews={n} key={i}/>
         ))}

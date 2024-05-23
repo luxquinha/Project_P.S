@@ -14,23 +14,25 @@ const CarouselRoot = ({children, autoSlide = false, autoSlideInterval = 5000, sl
   },[current, keepSliding])
 
   return (
-    <div className='flex flex-col' onMouseOver={()=>(setKeppSliding(false))} onMouseLeave={()=>(setKeppSliding(true))}>
+    <div className='flex flex-col relative' onMouseOver={()=>(setKeppSliding(false))} onMouseLeave={()=>(setKeppSliding(true))}>
       <div className={twMerge('flex flex-row mx-auto relative overflow-hidden', className)}>
           {children}
       </div>
-    {/* Amostra as páginações do carousel*/}
+      {/* Amostra as páginações do carousel*/}
       {slidePagination && (
-        <div className='w-full h-6 flex items-center justify-center gap-x-2'>
-            {slideNews.map((_, i)=>(
-              <div className='w-8 h-4 hover:cursor-pointer bg-transparent flex items-center justify-center'
-              onClick={()=>(setCurrent(i))}
-              key={i}
-              >
-                <button 
-                className={`w-6 h-1 bg-skin-secondary rounded-lg duration-1000 ${current===i && 'bg-skin-terciary scale-125'}`} 
-                />
-              </div>
-            ))}
+        <div className='absolute inset-x-[50%] lg:static'>
+          <div className='w-full h-6 flex flex-row items-center justify-center gap-x-2'>
+              {slideNews.map((_, i)=>(
+                <div className='w-4 lg:w-8 h-4 hover:cursor-pointer bg-transparent flex items-center justify-center'
+                onClick={()=>(setCurrent(i))}
+                key={i}
+                >
+                  <button 
+                  className={`w-2 h-2 lg:w-6 lg:h-1 bg-skin-secondary rounded-full lg:rounded-lg duration-1000 ${current===i && 'bg-skin-terciary scale-125'}`} 
+                  />
+                </div>
+              ))}
+          </div>
         </div>)}
     </div>
   )

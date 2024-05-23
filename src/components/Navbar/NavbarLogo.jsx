@@ -8,7 +8,7 @@ import useThemeContext from '../../hooks/useTheme'
 const NavbarLogo = ({className}) => {
   const {theme} = useThemeContext()
   return (
-    <div className={twMerge('flex flex-row gap-x-1 h-12 w-24 justify-self-start', className )}>
+    <div className={twMerge('flex flex-row gap-x-1 h-14 w-24 justify-self-start', className )}>
       <Link to={'/'} className='mt-1 scale-95 hover:scale-[1] flex justify-center'>
         <img 
         src={theme==='theme-light'? Logo1 : Logo2} 

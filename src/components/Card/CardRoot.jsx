@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 
 const CardRoot = ({children, className, ...rest}) => {
   return (
-    <motion.div {...rest} className={twMerge('relative flex rounded-lg bg-skin-button-hover justify-end overflow-hidden cursor-default', className)}>
+    <motion.div {...rest} className={twMerge('relative flex rounded-lg bg-skin-button-hover lg:bg-skin-secondary justify-end overflow-hidden cursor-default', className)}>
         {children}
     </motion.div>
   )
