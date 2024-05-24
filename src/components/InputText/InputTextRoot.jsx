@@ -8,7 +8,7 @@ const InputText = ({children, ...rest}) => {
     <div 
     {...rest}
     data-show={show}
-    className={twMerge('h-9 flex flex-row items-center gap-x-3 md:gap-x-0 md:justify-between bg-transparent rounded-full px-2 overflow-hidden', rest.className)}>
+    className={twMerge('h-9 flex flex-row items-center gap-x-3 md:gap-x-0 bg-transparent rounded-full px-2 overflow-hidden', rest.className)}>
         {children}
     </div>
   )

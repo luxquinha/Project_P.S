@@ -7,7 +7,7 @@ const NavbarLink = ({label, route, className, icon=null}) => {
   return (
     <Link
     to={route}
-    className={twMerge('font-medium w-24 h-8 justify-center gap-x-2 flex items-center rounded-md text-lg text-skin-base hover:font-semibold hover:bg-skin-button-hover hover:shadow-sm', className)}>
+    className={twMerge('font-medium w-24 h-8 lg:w-32 lg:h-10 justify-center gap-x-2 flex items-center rounded-md text-lg text-skin-base hover:font-semibold hover:bg-skin-button-hover hover:shadow-sm', className)}>
       {icon!==null && icon}
       {label}
     </Link>
