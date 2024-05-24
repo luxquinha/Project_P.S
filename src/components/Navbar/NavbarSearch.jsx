@@ -18,7 +18,7 @@ const NavbarSearch = ({rootStyle, formStyle, actionStyle, iconSize}) => {
     data-show={show}
     className={twMerge('data-[show=true]:bg-skin-button-hover', rootStyle)}>
         <form onSubmit={handleSubmit(handleSearch)} className={twMerge('w-full flex flex-row items-center', formStyle)}>
-            <InputText.Label type={'text'} placeholder={'Type here to search'}
+            <InputText.Label type={'text'} placeholder={'O que você procura?'}
             register={register}
             />
         </form>

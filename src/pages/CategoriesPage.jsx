@@ -2,12 +2,16 @@ import React from 'react'
 import {Modal} from '../components/Modal/index'
 import { CategoryNews } from '../components/Category/index'
 import { Carousel} from '../components/Carousel/index'
+import { useParams } from 'react-router-dom'
 
 
 // Página que vai mostrar um layout com as notícias de acordo com a categoria escolhida pelo usuário no menu:
 const CategoriesPage = () => {
+  const {tipoCategoria} = useParams()
+
   return (
     <div>
+      <span>Categoria escolhida: {tipoCategoria}</span>
         {/* <Modal.Root>
         <Modal.Window>
           <Modal.Image url={currNews.url}/>

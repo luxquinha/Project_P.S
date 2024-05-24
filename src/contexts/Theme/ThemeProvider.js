@@ -7,6 +7,7 @@ export const ThemeProvider = ({children}) =>{
     const [theme, setTheme] = useState('theme-light')
     const [show, setShow] = useState(false)
     const [openModal, setOpenModal] = useState(false)
+    const [openSideBar,setOpenSideBar] = useState(false)
     const [current, setCurrent] = useState(0)
     const [currNews, setCurrNews] = useState({})
     const slideNews = [
@@ -42,11 +43,9 @@ export const ThemeProvider = ({children}) =>{
     }
 
     const handleToggleTheme = () => {
-        if(theme === 'theme-dark'){
-            setTheme('theme-light')
-        }else if(theme === 'theme-light'){
-            setTheme('theme-dark')
-        }
+        setTheme(prev =>(prev==='theme-dark' ? 
+        (localStorage.theme='theme-light', prev='theme-light'):
+        (localStorage.theme='theme-dark', prev='theme-dark')))
     }
 
     const prev = () =>{
@@ -62,7 +61,26 @@ export const ThemeProvider = ({children}) =>{
         setOpenModal(true)
     }
     return(
-        <ThemeContext.Provider value={{ handleHoverAction, show, setShow, theme, handleToggleTheme, slideNews, current, setCurrent, prev, next, openModal, setOpenModal, handleModal, currNews}}>
+        <ThemeContext.Provider 
+        value={{ 
+        handleHoverAction, 
+        handleToggleTheme, 
+        handleModal, 
+        currNews,
+        slideNews, 
+        prev, 
+        next, 
+        show, 
+        setShow, 
+        theme,
+        setTheme, 
+        current, 
+        setCurrent, 
+        openModal, 
+        setOpenModal, 
+        openSideBar,
+        setOpenSideBar
+        }}>
             {children}
         </ThemeContext.Provider>
     )

@@ -46,7 +46,7 @@ const HomePage = () => {
           </Modal.Content>
         </Modal.Window>
       </Modal.Root>
-
+d
       <CategoryNews.Root category='Esporte'>
           <CategoryNews.Hero mainNews={slideNews}/>
       </CategoryNews.Root>

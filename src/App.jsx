@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect } from 'react'
 import { Navbar } from './components/Navbar/index.jsx'
 import { InputText } from './components/InputText/index'
 import useThemeContext from './hooks/useTheme.js'
@@ -8,9 +8,11 @@ import { TbMenu2 } from "react-icons/tb"
 import { X } from 'lucide-react'
 
 const App = () => {
-    const { theme } = useThemeContext()
-    const [openSideBar,setOpenSideBar] = useState(false)
-    // const menus = [{}] -> Objeto que possui os tipo do menu, titulos do menu, icones, rotas.
+  const { theme, setTheme,openSideBar,setOpenSideBar } = useThemeContext()
+
+  useEffect(()=>{
+    setTheme(localStorage.theme)
+  },[])
 
   return (
     <div className={`${theme} relative`}>
@@ -18,16 +20,17 @@ const App = () => {
             <Navbar.Root className='hidden md:grid grid-cols-8 gap-x-2 justify-center'>
               <Navbar.Logo/>
               <Navbar.Links className='col-span-3 col-start-3 justify-self-end'>
-                <Navbar.Link label={'Home'} route={'/'}/>
-                <Navbar.Link label={'About'} route={'/sobre'}/>
-                <Navbar.Link label={'Contact'} route={'/contato'}/>
+                <Navbar.Link label={'Início'} route={'/'}/>
+                <Navbar.Link label={'Sobre nós'} route={'/sobre'}/>
+                <Navbar.Link label={'Contato'} route={'/contato'}/>
               </Navbar.Links>
-              <Navbar.ToggleTheme iconSize={18}/>
+              <Navbar.ToggleTheme iconSize={14}/>
               <Navbar.Search
               rootStyle='justify-self-stretch col-span-2 col-start-7 px-4'
-              iconSize={18}
+              iconSize={23}
               />
             </Navbar.Root>
+
             <Navbar.Root className='flex flex-row items-center justify-between md:hidden'>
               <InputText.Root>
                 <InputText.Action 
@@ -44,7 +47,7 @@ const App = () => {
         <main className='bg-skin-primary min-h-screen min-w-full pt-20'>
             <Outlet/>
         </main>
-        <footer className='bg-skin-secondary bg-opacity-30 text-skin-base'>
+        <footer className='bg-skin-secondary bg-opacity-30 text-skin-base mb-2'>
             <span>rodapé</span>
         </footer>
         
