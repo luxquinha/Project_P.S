@@ -11,34 +11,31 @@ import { FaRegHeart } from 'react-icons/fa'
 import { BsBookmark } from 'react-icons/bs'
 import { HiOutlineBookOpen } from 'react-icons/hi'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
+import { useSliderNews } from '../services/useHttpClient'
 
 const HomePage = () => {
-  const {slideNews, prev, next, setOpenModal, currNews, handleModal} = useThemeContext()
-  const { news, setNews, validateNews } = useRequesContext()
-
-  const getNews = async ()=>{
-    try{
-      const response = await axios.get('https://newsapi.org/v2/top-headlines?country=us&category=science&pageSize=15&apiKey=2f5f3c912f1948529ffb9ec63c0af818') 
-      validateNews(response.data?.articles)
-    } catch(error){
-      console.log(error);
-    }
-  }
+  const {slideNews, prev, next, setOpenModal, currNews, handleModal, menus} = useThemeContext()
+  const { newsSlider, validateNews } = useRequesContext()
+  const navigateTo = useNavigate()
+  const {data, isLoading} = useSliderNews()
 
   useEffect(()=>{
-    if(localStorage.carouselNews===undefined){
-      getNews()
-    }else{
-      const results = JSON.parse(localStorage.getItem('carouselNews'))
-      setNews(results)
-    }
-  },[])
-  
+    if(isLoading===false)
+      validateNews(data, 'carouselNews')
+  },[isLoading])
+
+  if(isLoading){
+    return(
+      <span className='text-skin-base text-2xl'>Carregando</span>
+    )
+  }
+
   return (
     <section className='bg-skin-primary text-skin-base'>
       <div>
         <Carousel.Root slidePagination={true} autoSlide={true} autoSlideInterval={10000} className='max-w-[1400px] w-[98%] h-[calc(100vh-106px)]'>
-          {news?.map((n, i)=>(
+          {newsSlider?.map((n, i)=>(
             <Carousel.Image url={n?.urlToImage} key={i}>
               <Carousel.Content 
               title={n?.title}
@@ -61,15 +58,18 @@ const HomePage = () => {
               <Modal.Action icon={<X size={23}/>} action={()=>(setOpenModal(false))} className='absolute top-1 right-1 w-8 h-8 hover:bg-transparent hover:scale-110'/>
               <Modal.Action label='Gostei' icon={<FaRegHeart size={20}/>} action={()=>(console.log('Gostei'))}/>
               <Modal.Action label='Salvar' icon={<BsBookmark size={18}/>} action={()=>(console.log('Ler depois'))}/>
-              <Modal.Action label='Abrir' icon={<HiOutlineBookOpen size={23}/>} action={()=>(console.log('Ler agora'))}/> 
+              <Modal.Action label='Abrir' icon={<HiOutlineBookOpen size={23}/>} action={()=>(navigateTo(currNews?.url))}/> 
             </Modal.Actions>
           </Modal.Content>
         </Modal.Window>
       </Modal.Root>
 
-      <CategoryNews.Root category='Sports'>
-          <CategoryNews.Hero mainNews={slideNews}/>
-      </CategoryNews.Root>
+      {menus[1].menus.map((menu, i)=>(
+        <CategoryNews.Root category={menu.label} key={i}>
+            <CategoryNews.Hero mainNews={slideNews}/>
+        </CategoryNews.Root>
+      ))}
+
 
       <Carousel.Draggable className='mt-1 py-2' category='Breaking News'>
         {slideNews?.map((n,i)=>(

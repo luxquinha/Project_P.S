@@ -6,7 +6,7 @@ import useRequestContext from '../../hooks/useRequest'
 const CarouselRoot = ({children, autoSlide = false, autoSlideInterval = 5000, slidePagination = false,className}) => {
 
   const {next, current, setCurrent} = useThemeContext()
-  const {news} = useRequestContext()
+  const {newsSlider} = useRequestContext()
   const [keepSliding, setKeppSliding] = useState(autoSlide)
 
   useEffect(()=>{
@@ -24,7 +24,7 @@ const CarouselRoot = ({children, autoSlide = false, autoSlideInterval = 5000, sl
       {slidePagination && (
         <div className='absolute inset-x-[50%] lg:static'>
           <div className='w-full h-6 flex flex-row items-center justify-center gap-x-2'>
-              {news.map((_, i)=>(
+              {newsSlider?.map((_, i)=>(
                 <div className='w-4 lg:w-8 h-4 hover:cursor-pointer bg-transparent flex items-center justify-center'
                 onClick={()=>(setCurrent(i))}
                 key={i}

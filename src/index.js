@@ -10,6 +10,7 @@ import SearchPage from './pages/SearchPage'
 import MyActivitiesPage from './pages/MyActivitiesPage';
 import { AppProvider } from './contexts';
 import App from './App';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 const routes = createBrowserRouter([
   {
@@ -44,11 +45,22 @@ const routes = createBrowserRouter([
   }
 ])
 
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      staleTime: 1000 * 60 * 60 // 1 hora
+    }
+  }
+})
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <React.StrictMode>
     <AppProvider>
-      <RouterProvider router={routes}/>
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={routes}/>
+      </QueryClientProvider>
     </AppProvider>
   // </React.StrictMode>
 );
