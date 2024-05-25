@@ -17,20 +17,20 @@ const NavbarSide = () => {
       menus: [
         {
           id:3,
-          label: 'Início',
+          label: 'Home',
           route: '/',
           icon: <FaHouse size={22}/>,
         },
         {
           id:4,
-          label: 'Sobre nós',
+          label: 'About us',
           route: '/sobre',
           icon: <ImProfile size={22}/>,
           iconSize: 22,
         },
         {
           id:5,
-          label: 'Contato',
+          label: 'Contact',
           route: '/contato',
           icon: <FaPhoneAlt size={22}/>,
           iconSize: 22,
@@ -38,52 +38,52 @@ const NavbarSide = () => {
       ]
     },
     {
-      title: 'Categorias',
+      title: 'Categories',
       menus: [
         {
           id:6,
-          label: 'Esporte',
+          label: 'Sports',
           route: '/categorias/esporte',
           icon: <MdSportsBasketball size={22}/>,
         },
         {
           id:7,
-          label: 'Entretenimento',
+          label: 'Entertrainment',
           route: '/categorias/entretenimento',
           icon: <GiDiamondsSmile size={22}/>,
         },
         {
           id:8,
-          label: 'Tecnologia',
+          label: 'Technology',
           route: '/categorias/tecnologia',
           icon: <PiCircuitryFill size={22}/>,
         },
         {
           id:9,
-          label: 'Saúde',
+          label: 'Health',
           route: '/categorias/saude',
           icon: <GiHealthNormal size={22}/>,
         },
         {
           id:10,
-          label: 'Guerra',
+          label: 'Business',
           route: '/categorias/guerra',
           icon: <GiGreatWarTank size={22}/>,
         }
       ]
     }
     ,{
-      title: 'Mais',
+      title: 'More',
       menus: [
         {
           id:11,
-          label: 'Salvos',
+          label: 'Saved',
           route: '/minhaAtividade/salvos',
           icon: <BsBookmarkFill size={22}/>,
         },
         {
           id:12,
-          label: 'Curtidos',
+          label: 'Liked',
           route: '/minhaAtividade/curtidos',
           icon: <FaHeart size={22}/>,
         }

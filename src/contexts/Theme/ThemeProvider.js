@@ -1,9 +1,11 @@
 import { useState } from "react"
 import { ThemeContext } from "./ThemeContext"
+import useRequestContext from "../../hooks/useRequest"
 
 
 
 export const ThemeProvider = ({children}) =>{
+    const {news} = useRequestContext()
     const [theme, setTheme] = useState('theme-light')
     const [show, setShow] = useState(false)
     const [openModal, setOpenModal] = useState(false)
@@ -49,10 +51,10 @@ export const ThemeProvider = ({children}) =>{
     }
 
     const prev = () =>{
-        setCurrent((prevState)=> prevState===0 ? (slideNews.length-1): (prevState-1))
+        setCurrent((prevState)=> prevState===0 ? (news.length-1): (prevState-1))
     }
     const next = () =>{
-        setCurrent((prevState)=> prevState===(slideNews.length-1) ? 0 : (prevState+1))
+        setCurrent((prevState)=> prevState===(news.length-1) ? 0 : (prevState+1))
     }
 
     const handleModal = (data=null) => {

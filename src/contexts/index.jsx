@@ -1,9 +1,12 @@
+import { RequestProvider } from "./Request/RequestProvider"
 import { ThemeProvider } from "./Theme/ThemeProvider"
 
 export const AppProvider = ({children}) =>{
     return(
-        <ThemeProvider>
-            {children}
-        </ThemeProvider>
+        <RequestProvider>
+            <ThemeProvider>
+                {children}
+            </ThemeProvider>
+        </RequestProvider>
     )
 }
