@@ -50,6 +50,15 @@ const HomePage = () => {
           ))}
         </Carousel.Root>
       </div>
+
+      <Carousel.Draggable className='mt-1 py-2' category='Breaking News'/>
+
+      {menus[1].menus.map((menu, i)=>(
+        <CategoryNews.Root category={menu.label} key={i}>
+            <CategoryNews.Hero mainNews={slideNews}/>
+        </CategoryNews.Root>
+      ))}
+
       <Modal.Root>
         <Modal.Window>
           <Modal.Image url={currNews.urlToImage}/>
@@ -58,24 +67,11 @@ const HomePage = () => {
               <Modal.Action icon={<X size={23}/>} action={()=>(setOpenModal(false))} className='absolute top-1 right-1 w-8 h-8 hover:bg-transparent hover:scale-110'/>
               <Modal.Action label='Gostei' icon={<FaRegHeart size={20}/>} action={()=>(console.log('Gostei'))}/>
               <Modal.Action label='Salvar' icon={<BsBookmark size={18}/>} action={()=>(console.log('Ler depois'))}/>
-              <Modal.Action label='Abrir' icon={<HiOutlineBookOpen size={23}/>} action={()=>(navigateTo(currNews?.url))}/> 
+              <Modal.Href label='Abrir' icon={<HiOutlineBookOpen size={25}/>} url={currNews?.url}/>
             </Modal.Actions>
           </Modal.Content>
         </Modal.Window>
       </Modal.Root>
-
-      {menus[1].menus.map((menu, i)=>(
-        <CategoryNews.Root category={menu.label} key={i}>
-            <CategoryNews.Hero mainNews={slideNews}/>
-        </CategoryNews.Root>
-      ))}
-
-
-      <Carousel.Draggable className='mt-1 py-2' category='Breaking News'>
-        {slideNews?.map((n,i)=>(
-          <CategoryNews.Line lineNews={n} key={i}/>
-        ))}
-      </Carousel.Draggable>
     </section>
   )
 }

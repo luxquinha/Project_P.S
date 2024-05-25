@@ -1,6 +1,7 @@
 import ModalAction from "./ModalAction";
 import ModalActions from "./ModalActions";
 import ModalContent from "./ModalContent";
+import ModalHref from "./ModalHref";
 import ModalImage from "./ModalImage";
 import ModalRoot from "./ModalRoot";
 import ModalTrigger from "./ModalTrigger";
@@ -13,5 +14,6 @@ export const Modal = {
     Content: ModalContent,
     Actions: ModalActions,
     Action: ModalAction,
-    Trigger: ModalTrigger
+    Trigger: ModalTrigger,
+    Href: ModalHref
 }
