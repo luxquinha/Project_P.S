@@ -16,7 +16,7 @@ const CarouselDraggable = ({children, className, category = ''}) => {
     },[dragCar.current])
 
     useEffect(()=>{
-      if(data)
+      if(isLoading===false)
         validateNews(data, 'Highlights')
     },[isLoading])
 

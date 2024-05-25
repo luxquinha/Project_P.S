@@ -83,12 +83,6 @@ export const ThemeProvider = ({children}) =>{
               icon: <MdSportsBasketball size={22}/>,
             },
             {
-              id:7,
-              label: 'entertrainment',
-              route: '/categorias/entretenimento',
-              icon: <GiDiamondsSmile size={22}/>,
-            },
-            {
               id:8,
               label: 'technology',
               route: '/categorias/tecnologia',

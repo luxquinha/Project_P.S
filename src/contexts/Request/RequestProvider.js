@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { RequestContext } from "./RequestContext"
-import { useSliderNews } from "../../services/useHttpClient"
+import axios from "axios"
 
 export const RequestProvider = ({children}) => {
     const [newsSlider, setNewsSlider] = useState([])
@@ -44,7 +44,7 @@ export const RequestProvider = ({children}) => {
             }else if(type === 'entertrainmentMain'){
                 localStorage.setItem(type, JSON.stringify(result))
                 setNewsEntertrainment(result)
-            }else if(type === 'HealthMain'){
+            }else if(type === 'healthMain'){
                 localStorage.setItem(type, JSON.stringify(result))
                 setNewsHealth(result)
             }else if(type === 'technologyMain'){
@@ -56,12 +56,17 @@ export const RequestProvider = ({children}) => {
 
     // Padroniza a quantidade de noticias necessárias para alimentar as secções
     const handleUnderXNews = (data, x) =>{
-        if(data.length<=x)
+        if(data?.length<=x)
             return data
         else{
-            const result = data.filter((_, i) => i<x)
+            const result = data?.filter((_, i) => i<x)
             return result
         }
+    }
+
+    const getCategories = async (category)=>{
+        const response = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&category=${category}&pageSize=15&apiKey=${process.env.REACT_APP_NEWS_API_KEY}`)
+        return response.data.articles
     }
 
     return(
@@ -75,6 +80,7 @@ export const RequestProvider = ({children}) => {
             newsSport,
             newsTechnology,
             validateNews,
+            getCategories
         }}>
             {children}
         </RequestContext.Provider>

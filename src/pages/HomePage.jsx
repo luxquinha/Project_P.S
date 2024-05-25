@@ -10,14 +10,11 @@ import { ChevronRight, ChevronLeft, Eye, X } from 'lucide-react'
 import { FaRegHeart } from 'react-icons/fa'
 import { BsBookmark } from 'react-icons/bs'
 import { HiOutlineBookOpen } from 'react-icons/hi'
-import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
 import { useSliderNews } from '../services/useHttpClient'
 
 const HomePage = () => {
-  const {slideNews, prev, next, setOpenModal, currNews, handleModal, menus} = useThemeContext()
+  const { prev, next, setOpenModal, currNews, handleModal, menus} = useThemeContext()
   const { newsSlider, validateNews } = useRequesContext()
-  const navigateTo = useNavigate()
   const {data, isLoading} = useSliderNews()
 
   useEffect(()=>{
@@ -54,9 +51,7 @@ const HomePage = () => {
       <Carousel.Draggable className='mt-1 py-2' category='Breaking News'/>
 
       {menus[1].menus.map((menu, i)=>(
-        <CategoryNews.Root category={menu.label} key={i}>
-            <CategoryNews.Hero mainNews={slideNews}/>
-        </CategoryNews.Root>
+        <CategoryNews.Root category={menu.label} key={i}/>
       ))}
 
       <Modal.Root>
