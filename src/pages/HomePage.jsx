@@ -14,12 +14,14 @@ import { useSliderNews } from '../services/useHttpClient'
 
 const HomePage = () => {
   const { prev, next, setOpenModal, currNews, handleModal, menus} = useThemeContext()
-  const { newsSlider, validateNews } = useRequesContext()
-  const {data, isLoading} = useSliderNews()
+  const { newsSlider, validateNews, getNewsCache } = useRequesContext()
+  const {data, isLoading, status} = useSliderNews()
 
   useEffect(()=>{
     if(isLoading===false)
       validateNews(data, 'carouselNews')
+    if(status === 'error')
+      getNewsCache('carouselNews')
   },[isLoading])
 
   if(isLoading){

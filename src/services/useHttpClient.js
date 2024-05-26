@@ -12,6 +12,11 @@ const getHighlights = async ()=>{
     return response.data.articles
 }
 
+export const getCategories = async (category)=>{
+    const response = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&category=${category}&pageSize=15&apiKey=${process.env.REACT_APP_NEWS_API_KEY}`)
+    return response.data.articles
+}
+
 export const useSliderNews = () => {
     return useQuery({
         queryKey: ['carousel'],

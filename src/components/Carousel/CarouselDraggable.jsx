@@ -8,8 +8,8 @@ import { CategoryNews } from '../Category/index'
 const CarouselDraggable = ({children, className, category = ''}) => {
     const [width, setWidth] = useState(0)
     const dragCar = useRef()
-    const {validateNews, newsHighlights} = useRequestContext()
-    const {data, isLoading} = useHighlightsNews()
+    const {validateNews, newsHighlights, getNewsCache} = useRequestContext()
+    const {data, isLoading, status} = useHighlightsNews()
 
     useEffect(()=>{
         setWidth(dragCar.current?.scrollWidth - dragCar.current?.offsetWidth + 12)
@@ -18,6 +18,8 @@ const CarouselDraggable = ({children, className, category = ''}) => {
     useEffect(()=>{
       if(isLoading===false)
         validateNews(data, 'Highlights')
+      if(status==='error')
+        getNewsCache('Highlights')
     },[isLoading])
 
     if(isLoading){

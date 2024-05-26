@@ -11,7 +11,10 @@ const App = () => {
   const { theme, setTheme,openSideBar,setOpenSideBar } = useThemeContext()
 
   useEffect(()=>{
-    setTheme(localStorage.theme)
+    if(localStorage.theme === undefined)
+      localStorage.setItem('theme', JSON.stringify('theme-light'))
+    else
+      setTheme(localStorage.getItem('theme'))
   },[])
 
   return (
@@ -47,7 +50,7 @@ const App = () => {
         <main className='bg-skin-primary min-h-screen min-w-full pt-20'>
             <Outlet/>
         </main>
-        <footer className='bg-skin-secondary bg-opacity-30 text-skin-base mb-2'>
+        <footer className='bg-skin-secondary bg-opacity-30 text-skin-base pb-2 pt-2 h-[200px]'>
             <span>rodapé</span>
         </footer>
         

@@ -6,18 +6,20 @@ export const RequestProvider = ({children}) => {
     const [newsSlider, setNewsSlider] = useState([])
     const [newsSport, setNewsSport] = useState([])
     const [newsBusiness, setNewsBusiness] = useState([])
-    const [newsEntertrainment, setNewsEntertrainment] = useState([])
     const [newsHealth, setNewsHealth] = useState([])
     const [newsTechnology, setNewsTechnology] = useState([])
     const [newsHighlights, setNewsHighlights] = useState([])
 
     // Valida noticias para que todas possuas title, description e imagem
     const validateNews = (data, type)=>{
-        const newsValidated = data?.filter(n => 
-            (n.title!=='[Removed]'&& n.title!==null) && 
-            (n.description!=='[Removed]'&& n.description!==null) && 
-            n.urlToImage !== null )
-        handleKeepNews(newsValidated, type)
+        if(data!==undefined && data!=='[]'){
+            const newsValidated = data?.filter(n => 
+                (n.title!=='[Removed]'&& n.title!==null) && 
+                (n.description!=='[Removed]'&& n.description!==null) && 
+                n.urlToImage !== null )
+            handleKeepNews(newsValidated, type)
+        }
+        else return
     }
     
     // guarda as noticias de acordo com o tipo e as envia para o localStorage
@@ -41,9 +43,6 @@ export const RequestProvider = ({children}) => {
             }else if(type === 'businessMain'){
                 localStorage.setItem(type, JSON.stringify(result))
                 setNewsBusiness(result)
-            }else if(type === 'entertrainmentMain'){
-                localStorage.setItem(type, JSON.stringify(result))
-                setNewsEntertrainment(result)
             }else if(type === 'healthMain'){
                 localStorage.setItem(type, JSON.stringify(result))
                 setNewsHealth(result)
@@ -64,9 +63,22 @@ export const RequestProvider = ({children}) => {
         }
     }
 
-    const getCategories = async (category)=>{
-        const response = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&category=${category}&pageSize=15&apiKey=${process.env.REACT_APP_NEWS_API_KEY}`)
-        return response.data.articles
+    // Pega os valores que estão guardados no localStorage
+    const getNewsCache = (type) => {
+        const result = JSON.parse(localStorage.getItem(type))
+        if(type === 'carouselNews'){
+            setNewsSlider(result)
+        }else if(type === 'Highlights'){
+            setNewsHighlights(result)
+        }else if(type === 'sportsMain'){
+            setNewsSport(result)
+        }else if(type === 'businessMain'){
+            setNewsBusiness(result)
+        }else if(type === 'healthMain'){
+            setNewsHealth(result)
+        }else if(type === 'technologyMain'){
+            setNewsTechnology(result)
+        }
     }
 
     return(
@@ -74,13 +86,12 @@ export const RequestProvider = ({children}) => {
             newsSlider,
             setNewsSlider,
             newsBusiness,
-            newsEntertrainment,
             newsHealth,
             newsHighlights,
             newsSport,
             newsTechnology,
             validateNews,
-            getCategories
+            getNewsCache
         }}>
             {children}
         </RequestContext.Provider>
