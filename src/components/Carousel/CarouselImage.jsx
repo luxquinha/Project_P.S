@@ -9,7 +9,7 @@ const CarouselImage = ({url, children}) => {
         backgroundImage: `url(${url})`,
         backgroundRepeat: 'no-repeat',
         transform: `translateX(-${current * 100}%)`}}
-        className="w-full h-full rounded-2xl bg-center bg-cover transition-transform ease-out duration-1000 flex flex-col flex-shrink-0 justify-end relative"
+        className="w-full h-full rounded-2xl bg-top bg-cover transition-transform ease-out duration-1000 flex flex-col flex-shrink-0 justify-end relative"
         >
         {children}
     </div>
