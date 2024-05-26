@@ -6,21 +6,18 @@ import useRequestContext from '../../hooks/useRequest'
 import { CategoryNews } from '../Category/index'
 
 const CarouselDraggable = ({children, className, category = ''}) => {
-    const [width, setWidth] = useState(0)
     const dragCar = useRef()
+    const [width, setWidth] = useState()
     const {validateNews, newsHighlights, getNewsCache} = useRequestContext()
     const {data, isLoading, status} = useHighlightsNews()
 
     useEffect(()=>{
-        setWidth(dragCar.current?.scrollWidth - dragCar.current?.offsetWidth + 12)
-    },[dragCar.current])
-
-    useEffect(()=>{
+      setWidth(dragCar.current?.scrollWidth - dragCar.current?.offsetWidth + 12)
       if(isLoading===false)
         validateNews(data, 'Highlights')
       if(status==='error')
         getNewsCache('Highlights')
-    },[isLoading])
+    },[])
 
     if(isLoading){
       return(
