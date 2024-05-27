@@ -14,7 +14,7 @@ const AboutPage = () => {
   const {theme} = useThemeContext()
 
   return (
-    <section className='bg-skin-primary text-skin-base overflow-hidden px-10'>
+    <section className='bg-skin-primary text-skin-base overflow-hidden px-3 lg:px-10'>
       <About.Info
       title='Who are we?'
       description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
@@ -28,12 +28,13 @@ const AboutPage = () => {
 
       <About.Info
       title='Why choose us?'
+      subTitle='Compatibility'
       className='lg:flex-col gap-y-3 lg:gap-y-5 mb-20'
       titlesStyle='lg:w-[90%] lg:px-4 mb-6'
       >
         <About.Cards>
           <About.Card img={Cel} title='Smartphone' 
-          className='flex-row-reverse'
+          className='lg:flex-row-reverse'
           imgConfig='scale-125'
           desc="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's"
           />
@@ -42,7 +43,7 @@ const AboutPage = () => {
           desc="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's"
           />
           <About.Card img={Laptop} title='Laptop' 
-          className='flex-row-reverse'
+          className='lg:flex-row-reverse'
           imgConfig='scale-110'
           desc="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's"
           />
@@ -73,7 +74,7 @@ const AboutPage = () => {
       >
         <About.Cards>
           <About.Card img={CelM} title='Preview of the News' 
-          className='flex-row-reverse'
+          className='lg:flex-row-reverse'
           imgConfig='scale-125'
           desc="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's"
           />
@@ -82,7 +83,7 @@ const AboutPage = () => {
           desc="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's"
           />
           <About.Card img={LaptopM} title='You can like and save your News' 
-          className='flex-row-reverse'
+          className='lg:flex-row-reverse'
           imgConfig='scale-110'
           desc="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's"
           />
