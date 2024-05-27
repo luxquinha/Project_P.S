@@ -23,17 +23,17 @@ const CategoryNewsHero = ({mainNews}) => {
           <Modal.Trigger action={()=>(handleModal(mainNews[0]))} icon={<Eye size={18}/>} className='right-2 top-2 w-6 h-6'/>
         </Card.Root>
         {/* Cards secundários */}
-        <div className='flex flex-col mt-2 lg:mt-0 justify-around items-start lg:items-center gap-y-2 w-screen lg:w-[40%]'>
+        <div className='flex flex-col mt-2 lg:mt-0 justify-around items-start lg:items-center gap-y-3 w-screen lg:w-[40%]'>
             {mainNews?.map((n, i)=>(
               i!==0 &&
-            <Card.Root className='flex-row w-[93%] sm:w-[96%] lg:w-[98%] h-[150px] lg:h-[135px] justify-around items-center duration-500 lg:scale-95 hover:scale-100 hover:shadow-2xl hover:bg-skin-button-hover' key={i}>
+            <Card.Root className='flex-row w-full lg:w-[98%] h-[150px] lg:h-[135px] justify-around items-center duration-500 lg:scale-95 hover:scale-100 hover:shadow-2xl hover:bg-skin-button-hover' key={i}>
                 <Card.Image url={n.urlToImage} className='w-1/3 md:w-1/4 h-full'/>
                 <Card.Content 
                 title={n.title}
                 className='bg-gradient-to-tr from-transparent to-transparent w-3/4 px-3 mt-2'
                 titleStyle='text-xl text-justify indent-2 pt-1'
                 />
-                <Modal.Trigger action={()=>(handleModal(n))} icon={<Eye size={16}/>} className='right-2 top-1 hover:bg-skin-primary hover:shadow-md bg-transparent w-6 h-6'/>
+                <Modal.Trigger action={()=>(handleModal(n))} icon={<Eye size={16}/>} className='left-2 top-1 hover:bg-skin-primary hover:shadow-md w-6 h-6'/>
             </Card.Root>
             ))}
         </div>
