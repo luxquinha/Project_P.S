@@ -5,7 +5,9 @@ import useThemeContext from './hooks/useTheme.js'
 import { Outlet } from 'react-router-dom'
 // icones:
 import { TbMenu2 } from "react-icons/tb"
-import { X } from 'lucide-react'
+import { X, Instagram, Facebook, Linkedin, Twitter } from 'lucide-react'
+import { MapPin, Phone, Mail } from 'lucide-react'
+import { Footer } from './components/Footer/index.jsx'
 
 const App = () => {
   const { theme, setTheme,openSideBar,setOpenSideBar } = useThemeContext()
@@ -23,9 +25,9 @@ const App = () => {
             <Navbar.Root className='hidden md:grid grid-cols-8 gap-x-2 justify-center'>
               <Navbar.Logo/>
               <Navbar.Links className='col-span-3 col-start-3 justify-self-end'>
-                <Navbar.Link label={'Início'} route={'/'}/>
-                <Navbar.Link label={'Sobre nós'} route={'/sobre'}/>
-                <Navbar.Link label={'Contato'} route={'/contato'}/>
+                <Navbar.Link label={'Home'} route={'/'}/>
+                <Navbar.Link label={'About us'} route={'/sobre'}/>
+                <Navbar.Link label={'Contact'} route={'/contato'}/>
               </Navbar.Links>
               <Navbar.ToggleTheme iconSize={14}/>
               <Navbar.Search
@@ -50,8 +52,23 @@ const App = () => {
         <main className='bg-skin-primary min-h-screen min-w-full pt-20'>
             <Outlet/>
         </main>
-        <footer className='bg-skin-secondary bg-opacity-30 text-skin-base pb-2 pt-2 h-[200px]'>
-            <span>rodapé</span>
+        <footer className='bg-skin-secondary bg-opacity-30 text-skin-base pb-2 pt-2 h-[200px] flex flex-col items-center justify-center'>
+            <div className = 'flex flex-row items-center justify-center gap-x-4 pt-3'>
+                <Footer.Icon icon={<Facebook size={26}/>}/>
+                <Footer.Icon icon={<Instagram size={26}/>}/>
+                <Footer.Icon icon={<Twitter size={26}/>}/>
+                <Footer.Icon icon={<Linkedin size={26}/>}/>
+            </div>
+            <div className='flex flex-row items-center justify-center gap-x-4 pt-4'>
+                <div className='flex flex-row items-center justify-center'>
+                  <Phone size={23}/>
+                  <span className='text-skin-base text-lg font-medium'>(00) 91234-5678</span>
+                </div>
+                <div className='flex flex-row items-center justify-center'>
+                  <Mail size={23}/>
+                  <span className='text-skin-base text-lg font-medium'>@WorldNews</span>
+                </div>
+            </div>
         </footer>
         
     </div>
