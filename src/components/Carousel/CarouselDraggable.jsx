@@ -13,17 +13,22 @@ const CarouselDraggable = ({children, className, category = ''}) => {
 
     useEffect(()=>{
       setWidth(dragCar.current?.scrollWidth - dragCar.current?.offsetWidth + 12)
-      if(isLoading===false)
-        validateNews(data, 'Highlights')
-      if(status==='error')
-        getNewsCache('Highlights')
     },[])
-
+    
+    if(isLoading===false){
+      validateNews(data, 'Highlights')
+      if(status==='error' || newsHighlights?.length<=0)
+        getNewsCache('Highlights')
+    }
+    
     if(isLoading){
       return(
         <span className='text-skin-base text-2xl'>Carregando</span>
       )
     }
+
+    console.log(newsHighlights);
+
   return (
     <motion.div 
     ref={dragCar}

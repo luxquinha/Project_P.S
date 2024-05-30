@@ -1,6 +1,5 @@
 import { useState } from "react"
 import { RequestContext } from "./RequestContext"
-import axios from "axios"
 
 export const RequestProvider = ({children}) => {
     const [newsSlider, setNewsSlider] = useState([])
@@ -12,7 +11,7 @@ export const RequestProvider = ({children}) => {
 
     // Valida noticias para que todas possuas title, description e imagem
     const validateNews = (data, type)=>{
-        if(data!==undefined && data!=='[]'){
+        if(data!==undefined && data?.length > 0){
             const newsValidated = data?.filter(n => 
                 (n.title!=='[Removed]'&& n.title!==null) && 
                 (n.description!=='[Removed]'&& n.description!==null) && 
